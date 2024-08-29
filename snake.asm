@@ -10,14 +10,16 @@ main_loop:
     int 16h
     test ah, ah
     jz no_key
-    cmp ah, 0x48
+    mov al, ah
+    cmp al, 0x48
     je up
-    cmp ah, 0x50
+    cmp al, 0x50
     je down
-    cmp ah, 0x4B
+    cmp al, 0x4B
     je left
-    cmp ah, 0x4D
+    cmp al, 0x4D
     je right
+    jmp main_loop
 
 no_key:
     mov byte [es:di], 'O'
