@@ -1,23 +1,22 @@
 BITS 16
 ORG 0x100
 
-start:
 mov ax, 0xB800
 mov es, ax
 xor di, di
 
 main_loop:
     mov ah, 1
-    int 16h         
-    jz no_key       
-    int 16h         
-    cmp ah, 72      ; Up arrow
+    int 16h
+    test ah, ah
+    jz no_key
+    cmp ah, 0x48
     je up
-    cmp ah, 80      ; Down arrow
+    cmp ah, 0x50
     je down
-    cmp ah, 75      ; Left arrow
+    cmp ah, 0x4B
     je left
-    cmp ah, 77      ; Right arrow
+    cmp ah, 0x4D
     je right
 
 no_key:
