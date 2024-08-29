@@ -10,14 +10,13 @@ main_loop:
     int 16h
     test ah, ah
     jz no_key
-    mov al, ah
-    cmp al, 0x48
+    cmp ah, 0x48
     je up
-    cmp al, 0x50
+    cmp ah, 0x50
     je down
-    cmp al, 0x4B
+    cmp ah, 0x4B
     je left
-    cmp al, 0x4D
+    cmp ah, 0x4D
     je right
     jmp main_loop
 
