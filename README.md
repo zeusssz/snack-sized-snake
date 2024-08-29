@@ -32,10 +32,11 @@ This is a minimal implementation of a Snake game written in x86 assembly for DOS
   - Copy `snake.com` to the DOS environment.
   - Execute from the command line.
 
+- pray
 ## Game Controls
 
 - Press any key to start the game.
-- pray
+- Arrow Keys
 
 ## Notes
 
