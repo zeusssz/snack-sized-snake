@@ -1,6 +1,6 @@
 # Snake Game in x86 Assembly (Under 100 Bytes)
 
-This is a minimal implementation of a Snake game written in x86 assembly for DOS, targeting a size constraint of under 100 bytes. The game logic includes basic snake movement, simple collision handling, and snake growth upon "eating" food.
+This is a minimal implementation of a Snake game written in x86 assembly for DOS, targeting a size constraint of under 100 bytes. The game logic includes basic snake movement, _very_ simple collision handling, and snake growth upon eating food.
 
 ## Building the Game
 
