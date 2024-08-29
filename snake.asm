@@ -1,48 +1,41 @@
 BITS 16
 ORG 0x100
 
-mov ax, 0B800h      
-mov es, ax          
-mov di, 401h        
-mov byte [es:di], 'O'   
-mov byte [es:di+2], 'X' 
+start:
+mov ax, 0xB800
+mov es, ax
+xor di, di
 
-mov ah, 1           
-waitkey:
-int 16h             
-jz move             
-int 16h             
-cmp ah, 48h         
-je up               
-cmp ah, 50h         
-je down             
-cmp ah, 4Dh         
-je right            
-cmp ah, 4Bh         
-je left             
-jmp waitkey         
+main_loop:
+    mov ah, 1
+    int 16h         
+    jz no_key       
+    int 16h         
+    cmp ah, 72      ; Up arrow
+    je up
+    cmp ah, 80      ; Down arrow
+    je down
+    cmp ah, 75      ; Left arrow
+    je left
+    cmp ah, 77      ; Right arrow
+    je right
 
-move:              
-cmp byte [es:di], 'X'
-je game_over        
-mov byte [es:di], ' '  
-mov [es:di], 'O'       
-mov byte [es:di+2], 'X' 
-jmp waitkey          
+no_key:
+    mov byte [es:di], 'O'
+    jmp main_loop
 
-up:
-sub di, 160
-jmp move
-down:
-add di, 160
-jmp move
-left:
-sub di, 2
-jmp move
-right:
-add di, 2
-jmp move
+up: 
+    sub di, 160
+    jmp main_loop
 
-game_over:
-mov ah, 0
-int 16h
+down: 
+    add di, 160
+    jmp main_loop
+
+left: 
+    dec di
+    jmp main_loop
+
+right: 
+    inc di
+    jmp main_loop
