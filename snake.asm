@@ -5,37 +5,37 @@ mov ax, 0xB800
 mov es, ax
 xor di, di
 
-main_loop:
+.loop:
     mov ah, 1
     int 16h
     test ah, ah
-    jz no_key
+    jz .no_key
     cmp ah, 0x48
-    je up
+    je .up
     cmp ah, 0x50
-    je down
+    je .down
     cmp ah, 0x4B
-    je left
+    je .left
     cmp ah, 0x4D
-    je right
-    jmp main_loop
+    je .right
+    jmp .loop
 
-no_key:
+.no_key:
     mov byte [es:di], 'O'
-    jmp main_loop
+    jmp .loop
 
-up: 
+.up:
     sub di, 160
-    jmp main_loop
+    jmp .loop
 
-down: 
+.down:
     add di, 160
-    jmp main_loop
+    jmp .loop
 
-left: 
+.left:
     dec di
-    jmp main_loop
+    jmp .loop
 
-right: 
+.right:
     inc di
-    jmp main_loop
+    jmp .loop
