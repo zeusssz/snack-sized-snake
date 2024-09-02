@@ -10,28 +10,18 @@ xor di, di
     int 16h
     jz .draw
     cmp ah, 0x48
-    je .move_up
+    je .up
     cmp ah, 0x50
-    je .move_down
+    je .down
     cmp ah, 0x4B
-    je .move_left
+    je .left
     cmp ah, 0x4D
-    je .move_right
+    je .right
     jmp .loop
 
-.move_up:
-    sub di, 160
-    jmp .loop
-.move_down:
-    add di, 160
-    jmp .loop
-.move_left:
-    dec di
-    jmp .loop
-.move_right:
-    inc di
-    jmp .loop
-
-.draw:
-    mov byte [es:di], 'O'
-    jmp .loop
+.up:    sub di, 160
+.down:  add di, 160
+.left:  dec di
+.right: inc di
+.draw:  mov [es:di], byte 'O'
+        jmp .loop
