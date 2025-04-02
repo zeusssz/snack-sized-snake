@@ -37,9 +37,3 @@ This is a minimal implementation of a Snake game written in x86 assembly for DOS
 
 - Press any key to start the game.
 - Arrow Keys
-
-## Notes
-
-- This code directly manipulates the video memory (`0xB800`) for text mode in DOS, which may not be portable to non-DOS environments.
-- The implementation is highly constrained by the 100-byte size limit, so many standard game features are not included.
-- The snake’s movement and growth are handled by manipulating characters directly in memory, without advanced collision detection or dynamic food placement.
